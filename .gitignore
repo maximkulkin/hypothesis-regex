@@ -1,0 +1,9 @@
+*.pyc
+*.pyo
+/build/
+/dist/
+/.tox/
+/.eggs/
+/.cache/
+/.hypothesis/
+/hypothesis_regex.egg-info/

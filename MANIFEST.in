@@ -1,0 +1,4 @@
+include *.rst LICENSE
+recursive-include tests *
+recursive-exclude tests *.pyc
+recursive-exclude tests *.pyo
