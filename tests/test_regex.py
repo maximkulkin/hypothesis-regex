@@ -1,3 +1,5 @@
+import hypothesis as h
+import hypothesis.errors as he
 import hypothesis_regex
 import pytest
 import re
@@ -5,11 +7,13 @@ import six.moves
 
 
 def assert_can_generate(pattern):
+    regex = re.compile(pattern)
     strategy = hypothesis_regex.regex(pattern)
-    for _ in six.moves.range(100):
-        s = strategy.example()
-        assert re.match(pattern, s) is not None, \
-            '"%s" supposed to match "%s" (strategy = %s)' % (s, pattern, strategy)
+
+    h.find(strategy, lambda s: regex.match(s) is not None)
+
+    with pytest.raises(he.NoSuchExample):
+        h.find(strategy, lambda s: regex.match(s) is None)
 
 
 class TestRegexStrategy:
