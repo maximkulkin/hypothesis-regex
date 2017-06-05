@@ -10,7 +10,7 @@ def read(path):
 
 setup(
     name='hypothesis-regex',
-    version='0.1',
+    version='0.2',
     description=('Hypothesis extension to allow generating strings based on regex'),
     long_description=read('README.rst'),
     author='Maxim Kulkin',
