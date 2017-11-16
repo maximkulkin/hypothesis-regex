@@ -7,7 +7,6 @@ import sre_parse as sre
 import sys
 import hypothesis.errors as he
 import hypothesis.strategies as hs
-from hypothesis.searchstrategy.reprwrapper import ReprWrapperStrategy
 
 __all__ = ['regex']
 
