@@ -85,7 +85,7 @@ Requirements
 ============
 
 - Python >= 2.7 and <= 3.6
-- `hypothesis <https://pypi.python.org/pypi/hypothesis>`_ >= 3.8
+- `hypothesis <https://pypi.python.org/pypi/hypothesis>`__ >= 3.8
 
 Project Links
 =============
