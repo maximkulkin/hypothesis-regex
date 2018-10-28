@@ -1,3 +1,10 @@
+
+.. warning::
+    ``hypothesis-regex`` was `merged into Hypothesis in version 3.19.0 <https://hypothesis.readthedocs.io/en/latest/changes.html#v3-19-0>`_,
+    as the `from_regex <https://hypothesis.readthedocs.io/en/latest/data.html#hypothesis.strategies.from_regex>`_ strategy.
+    All users are encouraged to upgrade to the new version, which is API-compatible but
+    has much better performance and can handle a wider variety of regular expressions.
+
 ****************
 hypothesis-regex
 ****************
@@ -23,13 +30,14 @@ Example
 
 .. code:: python
 
-    from hypothesis_regex import regex
+    # The regex strategy is now built-in upstream
+    from hypothesis.strategies import from_regex
     import requests
     import json
 
     EMAIL_REGEX = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]{2,}\.[a-zA-Z0-9-.]{2,}$"
 
-    @given(regex(EMAIL_REGEX))
+    @given(from_regex(EMAIL_REGEX))  # or hypothesis.strategies.emails()
     def test_registering_user(email):
         response = requests.post('/signup', json.dumps({'email': email}))
         assert response.status_code == 201
@@ -77,9 +85,10 @@ There are two ways to pass regex flags:
 
 Installation
 ============
-::
 
-    $ pip install hypothesis-regex
+.. code:: python
+
+    from hypothesis.strategies import from_regex
 
 Requirements
 ============

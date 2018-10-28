@@ -1,6 +1,15 @@
 #!/usr/bin/env python
 
+import sys
 from setuptools import setup
+
+
+sys.stderr.write("""
+==============================================================================
+      The hypothesis-regex package was merged into Hypothesis in 2017.
+                    Please just use the built-in version!
+==============================================================================
+""")
 
 
 def read(path):
@@ -10,8 +19,8 @@ def read(path):
 
 setup(
     name='hypothesis-regex',
-    version='0.3.1',
-    description=('Hypothesis extension to allow generating strings based on regex'),
+    version='0.4.0',
+    description='Obseleted by merging as hypothesis.strategies.from_regex',
     long_description=read('README.rst'),
     author='Maxim Kulkin',
     author_email='maxim.kulkin@gmail.com',
@@ -26,7 +35,7 @@ setup(
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 7 - Inactive',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2',

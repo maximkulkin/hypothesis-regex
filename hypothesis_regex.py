@@ -5,6 +5,8 @@ import six.moves
 import string
 import sre_parse as sre
 import sys
+import time
+import warnings
 import hypothesis.errors as he
 import hypothesis.strategies as hs
 
@@ -31,6 +33,19 @@ UNICODE_WORD_CATEGORIES = UNICODE_LETTER_CATEGORIES | set(['Nd', 'Nl', 'No'])
 
 HAS_WEIRD_WORD_CHARS = (2, 7) <= sys.version_info[:2] < (3, 4)
 UNICODE_WEIRD_NONWORD_CHARS = u'\U00012432\U00012433\U00012456\U00012457'
+
+
+def encourage_user_to_update():
+    warnings.warn(
+        'The `hypothesis-regex` package has been merged upstream in '
+        'Hypothesis 3.19, in 2017.  `hypothesis.strategies.from_regex` has '
+        'an identical API, and better handling for several regex constructs. '
+        'Sleeping for five seconds to encourage migrating...'
+    )
+    time.sleep(5)
+
+
+encourage_user_to_update()
 
 
 class Context(object):
@@ -156,6 +171,7 @@ def regex(regex):
     anything. Ternary regex groups ('(?(name)yes-pattern|no-pattern)') are not
     supported at all.
     """
+    encourage_user_to_update()
     if not hasattr(regex, 'pattern'):
         regex = re.compile(regex)
 
